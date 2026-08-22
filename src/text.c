@@ -15,6 +15,7 @@
 #include "string_util.h"
 #include "text.h"
 #include "window.h"
+#include "field_mugshot.h"
 #include "constants/songs.h"
 #include "constants/speaker_names.h"
 
@@ -1529,6 +1530,23 @@ static u16 RenderText(struct TextPrinter *textPrinter)
             case EXT_CTRL_CODE_ENG:
                 textPrinter->japanese = FALSE;
                 return RENDER_REPEAT;
+            case EXT_CTRL_CODE_CREATE_MUGSHOT:
+            {
+                u32 id, emote;
+                id = *textPrinter->printerTemplate.currentChar;
+                textPrinter->printerTemplate.currentChar++;
+                emote = *textPrinter->printerTemplate.currentChar;
+                textPrinter->printerTemplate.currentChar++;
+                _CreateFieldMugshot(id, emote);
+                if (IsFieldMugshotActive())
+                {
+                    gSprites[GetFieldMugshotSpriteId()].data[0] = TRUE;
+                }
+            }
+                return RENDER_REPEAT;
+            case EXT_CTRL_CODE_DESTROY_MUGSHOT:
+                RemoveFieldMugshot();
+                return RENDER_REPEAT;
             case EXT_CTRL_CODE_SPEAKER:
                 {
                     enum SpeakerNames name = *textPrinter->printerTemplate.currentChar++;
@@ -1894,6 +1912,8 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
             case EXT_CTRL_CODE_COLOR_HIGHLIGHT_SHADOW:
             case EXT_CTRL_CODE_TEXT_COLORS:
                 ++str;
+            case EXT_CTRL_CODE_CREATE_MUGSHOT:
+            case EXT_CTRL_CODE_DESTROY_MUGSHOT:
             case EXT_CTRL_CODE_PLAY_BGM:
             case EXT_CTRL_CODE_PLAY_SE:
                 ++str;
