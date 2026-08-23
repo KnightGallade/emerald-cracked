@@ -3,14 +3,9 @@
 
 enum Mugshots {
     MUGSHOT_NONE = 0,
-    MUGSHOT_TEST,
+    MUGSHOT_TEST_BRENDAN,
+    MUGSHOT_TEST_MAY,
     MUGSHOT_COUNT,
-};
-
-enum MugshotEmotes {
-    EMOTE_NORMAL = 0,
-    EMOTE_ALT,
-    EMOTE_COUNT,
 };
 
 #endif // GUARD_CONSTANTS_FIELD_MUGSHOTS_H

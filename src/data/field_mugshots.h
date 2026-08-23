@@ -1,7 +1,7 @@
-static const u32 sFieldMugshotGfx_TestNormal[] = INCBIN_U32("graphics/field_mugshots/test/normal.4bpp.lz");
-static const u32 sFieldMugshotGfx_TestAlt[] = INCBIN_U32("graphics/field_mugshots/test/alt.4bpp.lz");
-static const u16 sFieldMugshotPal_TestNormal[] = INCBIN_U16("graphics/field_mugshots/test/normal.gbapal");
-static const u16 sFieldMugshotPal_TestAlt[] = INCBIN_U16("graphics/field_mugshots/test/alt.gbapal");
+static const u32 sFieldMugshotGfx_Test_Brendan[] = INCBIN_U32("graphics/field_mugshots/test_brendan.4bpp.lz");
+static const u16 sFieldMugshotPal_Test_Brendan[] = INCBIN_U16("graphics/field_mugshots/test_brendan.gbapal");
+static const u32 sFieldMugshotGfx_Test_May[] = INCBIN_U32("graphics/field_mugshots/test_may.4bpp.lz");
+static const u16 sFieldMugshotPal_Test_May[] = INCBIN_U16("graphics/field_mugshots/test_may.gbapal");
 
 struct MugshotGfx
 {
@@ -9,20 +9,16 @@ struct MugshotGfx
     const u16 *pal;
 };
 
-static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
+static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT] =
 {
-    [MUGSHOT_TEST] =
+    [MUGSHOT_TEST_BRENDAN] =
     {
-        [EMOTE_NORMAL] =
-        {
-            .gfx = sFieldMugshotGfx_TestNormal,
-            .pal = sFieldMugshotPal_TestNormal,
-        },
-
-        [EMOTE_ALT] =
-        {
-            .gfx = sFieldMugshotGfx_TestAlt,
-            .pal = sFieldMugshotPal_TestAlt,
-        },
+        .gfx = sFieldMugshotGfx_Test_Brendan,
+        .pal = sFieldMugshotPal_Test_Brendan,
+    },
+    [MUGSHOT_TEST_MAY] =
+    {
+        .gfx = sFieldMugshotGfx_Test_May,
+        .pal = sFieldMugshotPal_Test_May,
     },
 };

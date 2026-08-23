@@ -474,10 +474,8 @@ DESTROY_MUGSHOT = FC 1E
 
 @ these are basically what include/constants/field_mugshots.h have
 @ but without the x_COUNT and x_NONE ones for strings
-MUGSHOT_TEST = 01
-
-EMOTE_NORMAL = 00
-EMOTE_ALT = 01
+MUGSHOT_TEST_BRENDAN = 01
+MUGSHOT_TEST_MAY = 02
 
 
 @ Speaker names, the order must be matching with include/constants/speaker_names.h

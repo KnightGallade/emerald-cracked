@@ -2916,18 +2916,17 @@
 @ Feature Branches
 	@ Field Mugshots
 	@ example_usage:
-	@ 	createfieldmugshot MUGSHOT_TEST, EMOTE_NORMAL
+	@ 	createfieldmugshot MUGSHOT_TEST_BRENDAN
 	@ 	msgbox test
 	@ 	removefieldmugshot
-	@ 	createfieldmugshot MUGSHOT_TEST, EMOTE_ALT
+	@ 	createfieldmugshot MUGSHOT_TEST_MAY
 	@ 	msgbox test2
 	@ 	removefieldmugshot
 
 	@ spawn a mugshot in the overworld at a specific coordinate
-	.macro createfieldmugshot id:req, emote=0
+	.macro createfieldmugshot id:req
 	callnative CreateFieldMugshot
 	.2byte \id
-	.2byte \emote
 	.endm
 
 	@ destroys a mugshot in the overworld, if there is one

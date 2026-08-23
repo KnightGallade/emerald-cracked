@@ -1531,18 +1531,16 @@ static u16 RenderText(struct TextPrinter *textPrinter)
                 textPrinter->japanese = FALSE;
                 return RENDER_REPEAT;
             case EXT_CTRL_CODE_CREATE_MUGSHOT:
-            {
-                u32 id, emote;
-                id = *textPrinter->printerTemplate.currentChar;
-                textPrinter->printerTemplate.currentChar++;
-                emote = *textPrinter->printerTemplate.currentChar;
-                textPrinter->printerTemplate.currentChar++;
-                _CreateFieldMugshot(id, emote);
-                if (IsFieldMugshotActive())
                 {
-                    gSprites[GetFieldMugshotSpriteId()].data[0] = TRUE;
+                    u32 id;
+                    id = *textPrinter->printerTemplate.currentChar;
+                    textPrinter->printerTemplate.currentChar++;
+                    _CreateFieldMugshot(id);
+                    if (IsFieldMugshotActive())
+                    {
+                        gSprites[GetFieldMugshotSpriteId()].data[0] = TRUE;
+                    }
                 }
-            }
                 return RENDER_REPEAT;
             case EXT_CTRL_CODE_DESTROY_MUGSHOT:
                 RemoveFieldMugshot();
